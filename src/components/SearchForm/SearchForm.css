@@ -1,0 +1,148 @@
+.search {
+  width: 100%;
+  padding: 80px 40px 136px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search__content {
+  max-width: 608px;
+  width: 100%;
+  text-align: center;
+}
+
+.search__title {
+  font-family: "Roboto Slab", serif;
+  font-size: 60px;
+  font-weight: 400;
+  line-height: 64px;
+  color: #ffffff;
+  margin: 0 0 32px;
+  text-transform: none;
+}
+
+.search__subtitle {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #ffffff;
+  margin: 0 0 88px;
+}
+
+.search__form {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  max-width: 608px;
+  margin: 0 auto;
+}
+
+.search__input {
+  flex: 1;
+  width: 100%;
+  padding: 21px 160px 21px 24px;
+  border: none;
+  border-radius: 100px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  color: #1a1b22;
+  background-color: #ffffff;
+  font-family: "Roboto", Arial, sans-serif;
+}
+
+.search__input::placeholder {
+  color: #b6bcbf;
+}
+
+.search__input:focus {
+  outline: none;
+}
+
+.search__button {
+  position: absolute;
+  right: 8px;
+  padding: 13px 50px;
+  background-color: #2f71e5;
+  color: #ffffff;
+  border: none;
+  border-radius: 100px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-family: "Roboto", Arial, sans-serif;
+}
+
+.search__button:hover {
+  background-color: #347eff;
+}
+
+.search__button:active {
+  background-color: #2a5ecf;
+}
+.search__input_error {
+  border: 2px solid #ff0000;
+}
+
+.search__error {
+  display: block;
+  color: #ff0000;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 15px;
+  margin-top: 8px;
+  text-align: left;
+}
+/* Tablet view */
+@media screen and (max-width: 1024px) and (min-width: 769px) {
+  .search {
+    padding: 40px 40px 80px;
+  }
+
+  .search__title {
+    font-size: 36px;
+    line-height: 40px;
+    margin-bottom: 16px;
+  }
+
+  .search__subtitle {
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 48px;
+  }
+
+  .search__form {
+    max-width: 100%;
+  }
+} 
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .search {
+    padding: 32px 16px 64px;
+  }
+
+  .search__title {
+    font-size: 36px;
+    line-height: 40px;
+    margin-bottom: 16px;
+  }
+
+  .search__subtitle {
+    font-size: 16px;
+    margin-bottom: 48px;
+  }
+
+  .search__input {
+    padding: 16px 120px 16px 16px;
+    font-size: 14px;
+  }
+
+  .search__button {
+    padding: 10px 24px;
+    font-size: 16px;
+  }
+}
