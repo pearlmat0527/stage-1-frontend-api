@@ -9,7 +9,7 @@
 .search__content {
   max-width: 608px;
   width: 100%;
-  text-align: center;
+  text-align: left;
 }
 
 .search__title {
@@ -20,6 +20,7 @@
   color: #ffffff;
   margin: 0 0 32px;
   text-transform: none;
+  text-align: left;
 }
 
 .search__subtitle {
@@ -63,7 +64,8 @@
 
 .search__button {
   position: absolute;
-  right: 8px;
+  right: 0;
+  height: 64px;
   padding: 13px 50px;
   background-color: #2f71e5;
   color: #ffffff;
@@ -84,6 +86,7 @@
 .search__button:active {
   background-color: #2a5ecf;
 }
+
 .search__input_error {
   border: 2px solid #ff0000;
 }
@@ -97,6 +100,7 @@
   margin-top: 8px;
   text-align: left;
 }
+
 /* Tablet view */
 @media screen and (max-width: 1024px) and (min-width: 769px) {
   .search {
@@ -118,8 +122,9 @@
   .search__form {
     max-width: 100%;
   }
-} 
-/* Responsive */
+}
+
+/* Mobile view - UPDATED */
 @media screen and (max-width: 768px) {
   .search {
     padding: 32px 16px 64px;
@@ -136,13 +141,22 @@
     margin-bottom: 48px;
   }
 
+  .search__form {
+    flex-direction: column; /* ✅ Stack vertically */
+    gap: 16px; /* ✅ Space between input and button */
+    align-items: stretch; /* ✅ Make children full width */
+  }
+
   .search__input {
-    padding: 16px 120px 16px 16px;
+    padding: 16px 24px; /* ✅ Remove extra right padding */
     font-size: 14px;
+    width: 100%;
   }
 
   .search__button {
-    padding: 10px 24px;
+    position: static; /* ✅ Remove absolute positioning */
+    width: 100%; /* ✅ Full width */
+    padding: 16px 24px;
     font-size: 16px;
   }
 }

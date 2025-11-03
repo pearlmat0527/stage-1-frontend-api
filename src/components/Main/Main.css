@@ -49,10 +49,28 @@
 .news-cards__button:active {
   background-color: #d8d8d8;
 }
+
 .news-cards__error,
 .news-cards__not-found {
   text-align: center;
   padding: 80px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.news-cards__not-found {
+  height: 94px;
+  width: 356px;
+  margin: 0 auto;
+}
+
+.news-cards__not-found-icon {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 32px;
+  display: block;
 }
 
 .news-cards__error-text {
@@ -80,6 +98,7 @@
   color: #b6bcbf;
   margin: 0;
 }
+
 /* Tablet view - iPad */
 @media screen and (max-width: 1024px) and (min-width: 769px) {
   .news-cards {
@@ -94,9 +113,13 @@
   }
 
   .news-cards__grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 8px;
     margin-bottom: 32px;
+    justify-items: center;
+    max-width: 816px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .news-cards__button {
@@ -118,7 +141,7 @@
   }
 
   .news-cards__grid {
-    grid-template-columns: 1fr;  /* Single column */
+    grid-template-columns: 1fr;
     gap: 10px;
   }
 

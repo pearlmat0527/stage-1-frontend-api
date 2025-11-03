@@ -5,7 +5,7 @@ const API_KEY = "44987000cd604c1cb57209f8314fd023";
 
 // Use production proxy URL when deployed, localhost URL during development
 const BASE_URL =
-  process.env.NODE_ENV === "production"
+  import.meta.env.MODE === "production"
     ? "https://nomoreparties.co/news/v2"
     : "https://newsapi.org/v2";
 

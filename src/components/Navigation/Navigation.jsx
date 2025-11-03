@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import logoutIcon from "../../images/logout.svg";
+import logoutIconWhite from "../../images/logout_white.svg";
+import logoutIconBlack from "../../images/logout_black.svg";
 import "./Navigation.css";
 
 function Navigation({
@@ -15,6 +16,9 @@ function Navigation({
 
   const userName =
     currentUser?.name || currentUser?.email?.split("@")[0] || "User";
+
+  // ✅ Choose the correct icon based on theme
+  const logoutIcon = theme === "white" ? logoutIconBlack : logoutIconWhite;
 
   const handleMenuToggle = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -153,7 +157,7 @@ function Navigation({
                 >
                   {userName}
                   <img
-                    src={logoutIcon}
+                    src={logoutIconWhite}
                     alt="Logout"
                     className="navigation__button-icon"
                   />

@@ -1,7 +1,4 @@
-// Simulated API functions for Stage 1
-// In Stage 2/3, replace these with real fetch requests to your backend
 
-// Fake saved articles array (simulates database)
 let savedArticlesDB = [
   {
     _id: "65f7368dfb74bd6a92114c85",
@@ -19,7 +16,7 @@ let savedArticlesDB = [
 
 // Get all saved articles for the current user
 export const getItems = () => {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     setTimeout(() => {
       resolve(savedArticlesDB);
     }, 300); // Simulate network delay
@@ -28,7 +25,7 @@ export const getItems = () => {
 
 // Save an article (from News API search results)
 export const saveArticle = (article, keyword) => {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     setTimeout(() => {
       // Create a new article with _id (like MongoDB would)
       const savedArticle = {
@@ -53,7 +50,7 @@ export const saveArticle = (article, keyword) => {
 
 // Delete a saved article by _id
 export const deleteArticle = (articleId) => {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     setTimeout(() => {
       // Remove from fake database
       savedArticlesDB = savedArticlesDB.filter(
@@ -65,7 +62,6 @@ export const deleteArticle = (articleId) => {
   });
 };
 
-// Helper function to generate fake MongoDB-style IDs
 function generateFakeId() {
   return (
     Math.random().toString(36).substring(2, 15) +

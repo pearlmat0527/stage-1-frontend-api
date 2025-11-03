@@ -3,6 +3,7 @@ import NewsCard from "../NewsCard/NewsCard";
 import About from "../About/About";
 import Preloader from "../Preloader/Preloader";
 import "./Main.css";
+import notFoundIcon from "../../images/not-found_v1.svg";
 
 function Main({
   articles,
@@ -64,6 +65,11 @@ function Main({
     return (
       <main className="main">
         <section className="news-cards">
+          <img
+            src={notFoundIcon}
+            alt="Nothing found"
+            className="news-cards__not-found-icon"
+          />
           <div className="news-cards__not-found">
             <h2 className="news-cards__not-found-title">Nothing found</h2>
             <p className="news-cards__not-found-text">

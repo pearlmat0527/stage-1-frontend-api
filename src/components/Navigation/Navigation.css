@@ -98,7 +98,6 @@
   height: 24px;
 }
 .navigation_theme_white {
-  border-bottom: 0px -1px 0px 0px #d1d2d6 inset;
   background-color: #ffffff;
 }
 
@@ -233,7 +232,7 @@
     text-decoration: none;
     padding: 16px;
     display: block;
-    border-bottom: none
+    border-bottom: none;
     position: relative;
   }
 
@@ -258,8 +257,6 @@
     justify-content: center;
     gap: 8px;
     font-family: "Roboto", Arial, sans-serif;
-
-    
   }
 
   .navigation__hamburger {

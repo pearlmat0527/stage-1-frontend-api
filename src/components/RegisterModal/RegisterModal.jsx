@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./RegisterModal.css";
-import closeIcon from "../../images/close.png";
+import closeIcon from "../../images/close.svg"; // ✅ Changed to SVG
 
 function RegisterModal({ isOpen, onClose, onSignInClick, onRegister }) {
   const [email, setEmail] = useState("");
@@ -10,7 +10,6 @@ function RegisterModal({ isOpen, onClose, onSignInClick, onRegister }) {
   const [showSuccess, setShowSuccess] = useState(false);
   const [errors, setErrors] = useState({});
 
-  // Reset success state and errors when modal is closed or reopened
   useEffect(() => {
     if (!isOpen) {
       setShowSuccess(false);
@@ -21,21 +20,18 @@ function RegisterModal({ isOpen, onClose, onSignInClick, onRegister }) {
   const validateForm = () => {
     const newErrors = {};
 
-    // Email validation
     if (!email) {
       newErrors.email = "Email is required";
     } else if (!/\S+@\S+\.\S+/.test(email)) {
       newErrors.email = "Invalid email address";
     }
 
-    // Password validation
     if (!password) {
       newErrors.password = "Password is required";
     } else if (password.length < 6) {
       newErrors.password = "Password must be at least 6 characters";
     }
 
-    // Username validation
     if (!username) {
       newErrors.username = "Username is required";
     } else if (username.length < 2) {
@@ -48,23 +44,17 @@ function RegisterModal({ isOpen, onClose, onSignInClick, onRegister }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Validate form
     const newErrors = validateForm();
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       return;
     }
 
-    // Clear errors
     setErrors({});
-
-    // Call the onRegister function passed from App.jsx
     onRegister(email, password, username);
-    // Clear form after submission
     setEmail("");
     setPassword("");
     setUsername("");
-    // Show success message
     setShowSuccess(true);
   };
 
@@ -88,7 +78,6 @@ function RegisterModal({ isOpen, onClose, onSignInClick, onRegister }) {
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
-    // Clear error when user starts typing
     if (errors.email) {
       setErrors({ ...errors, email: "" });
     }
@@ -96,7 +85,6 @@ function RegisterModal({ isOpen, onClose, onSignInClick, onRegister }) {
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
-    // Clear error when user starts typing
     if (errors.password) {
       setErrors({ ...errors, password: "" });
     }
@@ -104,7 +92,6 @@ function RegisterModal({ isOpen, onClose, onSignInClick, onRegister }) {
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
-    // Clear error when user starts typing
     if (errors.username) {
       setErrors({ ...errors, username: "" });
     }
@@ -125,7 +112,8 @@ function RegisterModal({ isOpen, onClose, onSignInClick, onRegister }) {
             type="button"
             aria-label="Close"
           >
-            <img src={closeIcon} alt="" className="modal__close-icon" />
+            <img src={closeIcon} alt="Close" className="modal__close-icon" />{" "}
+            {/* ✅ Added alt text */}
           </button>
           <h2 className="modal__title modal__title_success">
             Registration successfully completed!

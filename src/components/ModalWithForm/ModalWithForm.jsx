@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import "./ModalWithForm.css";
-import closeIcon from "../../images/close.png";
+import closeIcon from "../../images/close.svg"; // ✅ Changed to SVG
 
 function ModalWithForm({
   isOpen,
@@ -42,7 +42,8 @@ function ModalWithForm({
           type="button"
           aria-label="Close"
         >
-          <img src={closeIcon} alt="" className="modal__close-icon" />
+          <img src={closeIcon} alt="Close" className="modal__close-icon" />{" "}
+          {/* ✅ Added alt text */}
         </button>
         <h2 className="modal__title">{title}</h2>
         <form className="modal__form" onSubmit={onSubmit}>

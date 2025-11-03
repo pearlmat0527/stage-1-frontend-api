@@ -65,9 +65,9 @@ export const authorize = (email, password) => {
   });
 };
 
-export const checkToken = (token) => {
+export const checkToken = () => {
   // Simulate checking if token is valid and return user data
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     setTimeout(() => {
       resolve({
         data: {
@@ -80,9 +80,9 @@ export const checkToken = (token) => {
   });
 };
 
-export const getUserInfo = (token) => {
+export const getUserInfo = () => {
   // Simulate getting user info from token
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     setTimeout(() => {
       resolve({
         _id: "fake-user-id-123",
