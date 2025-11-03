@@ -1,4 +1,10 @@
-import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  useNavigate,
+  Navigate,
+} from "react-router-dom";
 import { useState, useEffect } from "react";
 import Header from "../Header/Header";
 import SearchForm from "../SearchForm/SearchForm";
@@ -29,13 +35,9 @@ function AppContent() {
     const token = localStorage.getItem("jwt");
     const savedUser = localStorage.getItem("currentUser");
 
-    console.log("Checking login on mount - token:", token);
-    console.log("Checking login on mount - savedUser:", savedUser);
-
     if (token && savedUser) {
       setIsLoggedIn(true);
       setCurrentUser(JSON.parse(savedUser));
-      console.log("User is logged in:", JSON.parse(savedUser));
     }
   }, []);
 
@@ -70,17 +72,12 @@ function AppContent() {
   const handleLogin = (email, password) => {
     authorize(email, password)
       .then((res) => {
-        console.log("Login successful:", res);
-
         // Save token
         localStorage.setItem("jwt", res.token);
 
         // Save user data
         const user = { email: email };
         localStorage.setItem("currentUser", JSON.stringify(user));
-
-        console.log("Saved to localStorage - token:", res.token);
-        console.log("Saved to localStorage - user:", JSON.stringify(user));
 
         // Update state
         setIsLoggedIn(true);
@@ -101,9 +98,6 @@ function AppContent() {
     register(email, password, username)
       .then((res) => {
         console.log("Registration successful:", res);
-        // DO NOT save token or user data
-        // DO NOT set isLoggedIn to true
-        // DO NOT navigate anywhere
         // The RegisterModal will handle showing the success message
       })
       .catch((err) => {
@@ -124,8 +118,6 @@ function AppContent() {
 
     // Navigate to home page
     navigate("/");
-
-    console.log("User logged out");
   };
 
   // Handle saving an article
@@ -136,7 +128,6 @@ function AppContent() {
       _id: `saved-${Date.now()}`,
     };
     setSavedArticles([...savedArticles, newSavedArticle]);
-    console.log("Article saved:", newSavedArticle);
   };
 
   // Handle deleting a saved article
@@ -144,75 +135,80 @@ function AppContent() {
     setSavedArticles(
       savedArticles.filter((article) => article._id !== articleId)
     );
-    console.log("Article deleted:", articleId);
   };
+
+  // Home page component
+  const HomePage = () => (
+    <>
+      <div className="page__hero">
+        <Header
+          onSignInClick={handleOpenLoginModal}
+          isLoggedIn={isLoggedIn}
+          currentUser={currentUser}
+          onLogout={handleLogout}
+        />
+        <SearchForm onSearch={handleSearch} />
+      </div>
+      <Main
+        articles={articles}
+        isLoading={isLoading}
+        searchError={searchError}
+        hasSearched={hasSearched}
+        isLoggedIn={isLoggedIn}
+        onSaveArticle={handleSaveArticle}
+        onDeleteArticle={handleDeleteArticle}
+        savedArticles={savedArticles}
+      />
+      <Footer />
+    </>
+  );
+
+  // Saved News page component
+  const SavedNewsPage = () => (
+    <>
+      <Header
+        onSignInClick={handleOpenLoginModal}
+        isLoggedIn={isLoggedIn}
+        currentUser={currentUser}
+        theme="white"
+        onLogout={handleLogout}
+      />
+      <SavedNews
+        isLoggedIn={isLoggedIn}
+        currentUser={currentUser}
+        savedArticles={savedArticles}
+        onDeleteArticle={handleDeleteArticle}
+      />
+      <Footer />
+    </>
+  );
 
   return (
     <div className="page">
       <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <div className="page__hero">
-                <Header
-                  onSignInClick={handleOpenLoginModal}
-                  isLoggedIn={isLoggedIn}
-                  currentUser={currentUser}
-                  onLogout={handleLogout}
-                />
-                <SearchForm onSearch={handleSearch} />
-              </div>
-              <Main
-                articles={articles}
-                isLoading={isLoading}
-                searchError={searchError}
-                hasSearched={hasSearched}
-                isLoggedIn={isLoggedIn}
-                onSaveArticle={handleSaveArticle}
-                onDeleteArticle={handleDeleteArticle}
-                savedArticles={savedArticles}
-              />
-              <Footer />
-            </>
-          }
-        />
-        <Route
-          path="/saved-news"
-          element={
-            <>
-              <Header
-                onSignInClick={handleOpenLoginModal}
-                isLoggedIn={isLoggedIn}
-                currentUser={currentUser}
-                theme="white"
-                onLogout={handleLogout}
-              />
-              <SavedNews
-                isLoggedIn={isLoggedIn}
-                currentUser={currentUser}
-                savedArticles={savedArticles}
-                onDeleteArticle={handleDeleteArticle}
-              />
-              <Footer />
-            </>
-          }
-        />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/saved-news" element={<SavedNewsPage />} />
+        {/* Catch-all route - redirects to home */}
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
 
       {/* Modals */}
-      <LoginModal
-        isOpen={activeModal === "login"}
-        onClose={handleCloseModal}
-        onSignUpClick={handleOpenRegisterModal}
-        onLogin={handleLogin}
-      />
-      <RegisterModal
-        isOpen={activeModal === "register"}
-        onClose={handleCloseModal}
-        onSignInClick={handleOpenLoginModal}
-        onRegister={handleRegister}
-      />
+      {activeModal === "login" && (
+        <LoginModal
+          isOpen={true}
+          onClose={handleCloseModal}
+          onSignUpClick={handleOpenRegisterModal}
+          onLogin={handleLogin}
+        />
+      )}
+      {activeModal === "register" && (
+        <RegisterModal
+          isOpen={true}
+          onClose={handleCloseModal}
+          onSignInClick={handleOpenLoginModal}
+          onRegister={handleRegister}
+        />
+      )}
     </div>
   );
 }
