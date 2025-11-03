@@ -219,7 +219,7 @@ function AppContent() {
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/stage-1-frontend-api">
       <AppContent />
     </BrowserRouter>
   );
