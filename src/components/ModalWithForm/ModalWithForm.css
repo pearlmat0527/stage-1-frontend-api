@@ -133,11 +133,11 @@
 }
 
 /* Responsive */
-@media screen and (max-width: 1024px) {
-.modal {
-        top: -301px;
-        left: -16px;
-}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .modal {
+    top: -470px;
+    left: -16px;
+  }
   .modal__container {
     width: 430px;
   }
