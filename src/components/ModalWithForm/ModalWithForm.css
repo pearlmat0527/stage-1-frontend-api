@@ -133,17 +133,22 @@
 }
 
 /* Responsive */
-@media screen and (max-width: 1232px) {
-  .modal {
-    top: -424px;
-  }
+@media screen and (max-width: 1024px) {
+.modal {
+        top: -301px;
+        left: -16px;
+}
   .modal__container {
     width: 430px;
-    height: 380px;
   }
 }
 
 @media screen and (max-width: 768px) {
+  .modal {
+    top: -7px;
+    left: 0px;
+  }
+
   .modal__container {
     width: 100vw;
     height: auto;
@@ -156,8 +161,11 @@
   }
 
   .modal__close {
-    top: -50px;
-    right: 1px;
+    top: -44px;
+    right: 13px;
+
+    height: 24px;
+    width: 24px;
   }
 
   .modal__close-icon {

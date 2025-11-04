@@ -20,6 +20,12 @@
   flex-direction: column;
 }
 
+
+@media screen and (max-width: 1024px) {
+  .page__hero{
+    min-height: 400px;
+  }
+}
 @media screen and (max-width: 768px) {
   .page__hero {
     min-height: auto;

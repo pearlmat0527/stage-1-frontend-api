@@ -111,14 +111,22 @@
     font-size: 36px;
     line-height: 40px;
     margin-bottom: 16px;
+        height: 80px;
+    width: 385px;
   }
 
   .search__subtitle {
+    width: 452px;
+height: 48px;
+
+
     font-size: 18px;
     line-height: 24px;
     margin-bottom: 48px;
   }
-
+.search__content {
+    max-width: 452px;
+}
   .search__form {
     max-width: 100%;
   }
