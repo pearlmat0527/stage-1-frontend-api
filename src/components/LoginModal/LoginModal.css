@@ -1,0 +1,11 @@
+/* LoginModal inherits all styles from ModalWithForm */
+
+/* You can add any LoginModal-specific styles here if needed */
+
+/* Example: Custom styling for login error messages */
+.login-modal__error {
+  color: #ff0000;
+  font-size: 12px;
+  margin-top: -20px;
+  margin-bottom: 10px;
+}

@@ -1,0 +1,30 @@
+.header {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  border-bottom: 1px solid #ffffff; /* ✅ White border for dark theme */
+}
+
+.header_theme_white {
+  background-color: #ffffff;
+  border-bottom: 1px solid #000000; /* ✅ Black border for white theme */
+}
+
+/* Mobile view */
+@media screen and (max-width: 768px) {
+  .header {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    position: relative;
+    z-index: 10;
+    border-bottom: 1px solid #ffffff;
+  }
+
+  .header_theme_white {
+    background-color: #ffffff;
+    border-bottom: 1px solid #000000;
+  }
+}
